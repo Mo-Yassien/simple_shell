@@ -129,8 +129,8 @@ void *_realloc(void *, unsigned int, unsigned int);
 int bfree(void **);
 
 int interactive(info_t *);
-int is_delim(char, char *);
-int _isalpha(int);
+int _delim(char, char *);
+int _alpha(int);
 int _atoi(char *);
 
 int _erratoi(char *);
