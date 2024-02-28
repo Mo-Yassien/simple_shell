@@ -117,7 +117,7 @@ int _putchar(char);
 
 char *_strncpy(char *, char *, int);
 char *_strncat(char *, char *, int);
-char *_strchr(char *, char);
+char *_strch(char *, char);
 
 char **strtow(char *, char *);
 char **strtow2(char *, char);
