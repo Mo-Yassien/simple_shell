@@ -89,14 +89,14 @@ typedef struct builtin
 } builtin_table;
 
 
-int hsh(info_t *, char **);
-int find_builtin(info_t *);
-void find_cmd(info_t *);
-void fork_cmd(info_t *);
+int _hsh(info_t *, char **);
+int f_builtin(info_t *);
+void f_cmd(info_t *);
+void _fork(info_t *);
 
-int is_cmd(info_t *, char *);
-char *dup_chars(char *, int, int);
-char *find_path(info_t *, char *, char *);
+int _cmd(info_t *, char *);
+char *dupl_chars(char *, int, int);
+char *f_path(info_t *, char *, char *);
 
 int loophsh(char **);
 
