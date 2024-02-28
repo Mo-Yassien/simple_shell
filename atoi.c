@@ -2,38 +2,38 @@
 
 /**
  * inter - returns true if shell is interactive mode
- * @inform: struct address
+ * @info: struct address
  *
  * Return: 1 if interactive mode, 0 otherwise
  */
-int inter(info_t *inform)
+int inter(info_t *info)
 {
-	return (isatty(STDIN_FILENO) && inform->readfd <= 2);
+	return (isatty(STDIN_FILENO) && info->readfd <= 2);
 }
 
 /**
  * delim - checks if character is a delimeter
- * @ch: the char to check
- * @del: the delimeter string
+ * @c: the char to check
+ * @delim: the delimeter string
  * Return: 1 if true, 0 if false
  */
-int delim(char ch, char *del)
+int delim(char c, char *delim)
 {
-	while (*del)
-		if (*del++ == ch)
+	while (*delim)
+		if (*delim++ == ch)
 			return (1);
 	return (0);
 }
 
 /**
  *alpha - checks for alphabetic character
- *@ch: The character to input
- *Return: 1 if ch is alphabetic, 0 otherwise
+ *@c: The character to input
+ *Return: 1 if c is alphabetic, 0 otherwise
  */
 
-int alpha(int ch)
+int alpha(int c)
 {
-	if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z'))
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
 		return (1);
 	else
 		return (0);
@@ -41,25 +41,25 @@ int alpha(int ch)
 
 /**
  *atoi - converts a string to an integer
- *@sh: the string to be converted
+ *@s: the string to be converted
  *Return: 0 if no numbers in string, converted number otherwise
  */
 
-int atoi(char *sh)
+int atoi(char *s)
 {
 	int i, sign = 1, flag = 0, output;
 	unsigned int result = 0;
 
-	for (i = 0;  sh[i] != '\0' && flag != 2; i++)
+	for (i = 0;  s[i] != '\0' && flag != 2; i++)
 	{
-		if (sh[i] == '-')
+		if (s[i] == '-')
 			sign *= -1;
 
-		if (sh[i] >= '0' && sh[i] <= '9')
+		if (s[i] >= '0' && s[i] <= '9')
 		{
 			flag = 1;
 			result *= 10;
-			result += (sh[i] - '0');
+			result += (s[i] - '0');
 		}
 		else if (flag == 1)
 			flag = 2;
