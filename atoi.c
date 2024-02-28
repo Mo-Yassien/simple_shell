@@ -1,65 +1,65 @@
 #include "shell.h"
 
 /**
- * interactive - returns true if shell is interactive mode
- * @info: struct address
+ * inter - returns true if shell is interactive mode
+ * @inform: struct address
  *
  * Return: 1 if interactive mode, 0 otherwise
  */
-int interactive(info_t *info)
+int inter(info_t *inform)
 {
-	return (isatty(STDIN_FILENO) && info->readfd <= 2);
+	return (isatty(STDIN_FILENO) && inform->readfd <= 2);
 }
 
 /**
- * is_delim - checks if character is a delimeter
- * @c: the char to check
- * @delim: the delimeter string
+ * delim - checks if character is a delimeter
+ * @ch: the char to check
+ * @del: the delimeter string
  * Return: 1 if true, 0 if false
  */
-int is_delim(char c, char *delim)
+int delim(char ch, char *del)
 {
-	while (*delim)
-		if (*delim++ == c)
+	while (*del)
+		if (*del++ == ch)
 			return (1);
 	return (0);
 }
 
 /**
- *_isalpha - checks for alphabetic character
- *@c: The character to input
- *Return: 1 if c is alphabetic, 0 otherwise
+ *alpha - checks for alphabetic character
+ *@ch: The character to input
+ *Return: 1 if ch is alphabetic, 0 otherwise
  */
 
-int _isalpha(int c)
+int alpha(int ch)
 {
-	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+	if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z'))
 		return (1);
 	else
 		return (0);
 }
 
 /**
- *_atoi - converts a string to an integer
- *@s: the string to be converted
+ *atoi - converts a string to an integer
+ *@sh: the string to be converted
  *Return: 0 if no numbers in string, converted number otherwise
  */
 
-int _atoi(char *s)
+int atoi(char *sh)
 {
 	int i, sign = 1, flag = 0, output;
 	unsigned int result = 0;
 
-	for (i = 0;  s[i] != '\0' && flag != 2; i++)
+	for (i = 0;  sh[i] != '\0' && flag != 2; i++)
 	{
-		if (s[i] == '-')
+		if (sh[i] == '-')
 			sign *= -1;
 
-		if (s[i] >= '0' && s[i] <= '9')
+		if (sh[i] >= '0' && sh[i] <= '9')
 		{
 			flag = 1;
 			result *= 10;
-			result += (s[i] - '0');
+			result += (sh[i] - '0');
 		}
 		else if (flag == 1)
 			flag = 2;
