@@ -22,9 +22,9 @@ int _hsh(info_t *info, char **av)
 		if (r != -1)
 		{
 			set_info(info, av);
-			builtin_ret = find_builtin(info);
+			builtin_ret = f_builtin(info);
 			if (builtin_ret == -1)
-				find_cmd(info);
+				f_cmd(info);
 		}
 		else if (interactive(info))
 			_putchar('\n');
